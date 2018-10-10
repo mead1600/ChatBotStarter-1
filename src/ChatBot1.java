@@ -40,7 +40,7 @@ public class ChatBot1
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "What a coincidence, I like soccer too! ";
 	}
 	
 	/**
@@ -56,37 +56,32 @@ public class ChatBot1
 		
 		if (statement.length() == 0)
 		{
-			response = "Say something, please.";
+			response = "Where are you?";
 		}
 
 		else if (findKeyword(statement, "no") >= 0)
 		{
-			response = "Why so negative?";
+			response = "Why not?";
                 	emotion--;
 		}
 		
-		else if (findKeyword(statement, "levin") >= 0)
+		else if (findKeyword(statement, "yes") >= 0)
 		{
-			response = "More like LevinTheDream, amiright?";
+			response = "Why so";
 			emotion++;
 		}
-		else if (findKeyword(statement, "folwell") >= 0)
+		else if (findKeyword(statement, "i don't know") >= 0)
 		{
-			response = "Watch your backpacks, Mr. Folwell doesn't fall well.";
-			emotion++;
-		}
-		else if (findKeyword(statement, "goldman") >= 0)
-		{
-			response = "Go for the gold, man.";
+			response = "What don't you no?";
 			emotion++;
 		}
 
 		// Response transforming I want to statement
-		else if (findKeyword(statement, "I want to", 0) >= 0)
+		else if (findKeyword(statement, "I love to", 0) >= 0)
 		{
 			response = transformIWantToStatement(statement);
 		}
-		else if (findKeyword(statement, "I want",0) >= 0)
+		else if (findKeyword(statement, "I love",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
 		}	
@@ -101,7 +96,7 @@ public class ChatBot1
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
 	 * "Why do you want to <something>?"
-	 * @param statement the user statement, assumed to contain "I want to"
+	 * @param statement the user statement, assumed to contain "I love to"
 	 * @return the transformed statement
 	 */
 	private String transformIWantToStatement(String statement)
@@ -115,16 +110,16 @@ public class ChatBot1
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I want to", 0);
+		int psn = findKeyword (statement, "I love to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you want to " + restOfStatement + "?";
+		return "Why do you love to " + restOfStatement + "?";
 	}
 
 	
 	/**
 	 * Take a statement with "I want <something>." and transform it into 
 	 * "Would you really be happy if you had <something>?"
-	 * @param statement the user statement, assumed to contain "I want"
+	 * @param statement the user statement, assumed to contain "I love"
 	 * @return the transformed statement
 	 */
 	private String transformIWantStatement(String statement)
@@ -138,9 +133,9 @@ public class ChatBot1
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I want", 0);
+		int psn = findKeyword (statement, "I love", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Would you really be happy if you had " + restOfStatement + "?";
+		return "Would you really love to play " + restOfStatement + " now?";
 	}
 	
 	
