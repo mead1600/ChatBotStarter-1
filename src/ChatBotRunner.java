@@ -22,12 +22,10 @@ public class ChatBotRunner
 		Scanner in = new Scanner (System.in);
 		System.out.println("Welcome to the sport chatbot, nice to meet you.");
 		String statement = in.nextLine();
-
+        System.out.println("Which topic would you like to learn about? Soccer, Handball, Football, or Basketball");
 
 		while (!statement.toLowerCase().equals("bye"))
 		{
-			//Use Logic to control which chatbot is handling the conversation\
-			//This example has only chatbot1
 			while (statement.toLowerCase().equals("soccer"))
 			{
 				chatbot1.chatLoop(statement);

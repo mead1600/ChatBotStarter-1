@@ -9,9 +9,6 @@ import java.util.Scanner;
  */
 public class ChatBot2
 {
-	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-	int emotion = 0;
-
 
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -29,7 +26,6 @@ public class ChatBot2
 
 			statement = in.nextLine();
 			//getResponse handles the user reply
-			System.out.println(getResponse(statement));
 
 
 		}
@@ -41,9 +37,12 @@ public class ChatBot2
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		System.out.println("Hi, I can answer your questions about handball");
+		return "do you have any questions about handball?";
+
 	}
-	
+
+	/*
 	/**
 	 * Gives a response to a user statement
 	 * 
@@ -51,6 +50,7 @@ public class ChatBot2
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
+
 	public String getResponse(String statement)
 	{
 		String response = "";
@@ -60,17 +60,6 @@ public class ChatBot2
 			response = "Say something, please.";
 		}
 
-		else if (findKeyword(statement, "no") >= 0)
-		{
-			response = "Why so negative?";
-                	emotion--;
-		}
-		
-		else if (findKeyword(statement, "levin") >= 0)
-		{
-			response = "More like LevinTheDream amiright?";
-			emotion++;
-		}
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -80,12 +69,7 @@ public class ChatBot2
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
-		else
-		{
-			response = getRandomResponse();
 		}
-		
 		return response;
 	}
 	
@@ -239,27 +223,13 @@ public class ChatBot2
 	{
 		return findKeyword (statement, goal, 0);
 	}
-	
 
-
-	/**
-	 * Pick a default response to use if nothing else fits.
-	 * @return a non-committal string
-	 */
 	private String getRandomResponse ()
 	{
 		Random r = new Random ();
-		if (emotion == 0)
-		{	
-			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
-		}
-		if (emotion < 0)
-		{	
-			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-		}	
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
-	
+
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
 			"Hmmm.",
 			"Do you really think so?",
