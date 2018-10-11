@@ -30,7 +30,9 @@ public class ChatBot4
             statement = in.nextLine();
             //getResponse handles the user reply
             System.out.println(getResponse(statement));
-
+            if(statement.equalsIgnoreCase("basketball")){
+                System.out.println("Hi there, do you like basketball?");
+            }
 
         }
 

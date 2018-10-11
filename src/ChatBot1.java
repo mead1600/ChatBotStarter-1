@@ -62,30 +62,48 @@ public class ChatBot1
 		else if (findKeyword(statement, "no") >= 0)
 		{
 			response = "Why not?";
-                	emotion--;
+			emotion--;
 		}
 		
 		else if (findKeyword(statement, "yes") >= 0)
 		{
-			response = "Why so";
+			response = "Why so?";
 			emotion++;
 		}
-		else if (findKeyword(statement, "i don't know") >= 0)
+		else if (findKeyword(statement, "I don't know") >= 0)
 		{
-			response = "What don't you no?";
+			response = "What don't you know?";
+		}
+		else if (findKeyword(statement, "It is fun") >= 0)
+		{
+			response = "Yes, it is fun!";
 			emotion++;
 		}
-
+		else if (findKeyword(statement, "I don't like soccer") >= 0)
+		{
+			response = "Really?";
+			emotion--;
+		}
+        else if (findKeyword(statement, "I don't care") >= 0)
+        {
+            response = "Why don't you care?";
+            emotion--;
+        }
+        else if (findKeyword(statement, "so what") >= 0)
+        {
+            response = "Why so rude?";
+            emotion--;
+        }
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I love to", 0) >= 0)
 		{
 			response = transformIWantToStatement(statement);
 		}
-		else if (findKeyword(statement, "I love",0) >= 0)
+		else if (findKeyword(statement, "I want to",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
-		}	
-		else
+		}
+        else
 		{
 			response = getRandomResponse();
 		}
@@ -133,9 +151,9 @@ public class ChatBot1
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I love", 0);
-		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Would you really love to play " + restOfStatement + " now?";
+		int psn = findKeyword (statement, "I want to ", 0);
+		String restOfStatement = statement.substring(psn + 9).trim();
+		return "Why do you want to " + restOfStatement + "?";
 	}
 	
 	
@@ -161,7 +179,7 @@ public class ChatBot1
 		int psnOfYou = findKeyword (statement, "you", psnOfI);
 		
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-		return "Why do you " + restOfStatement + " me?";
+		return "Why do you " + restOfStatement + "me?";
 	}
 	
 
@@ -265,14 +283,12 @@ public class ChatBot1
 	}
 	
 	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Hmmm.",
 			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
+			"So, would you like to play soccer with me?",
+            "That's interesting."
+
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private String [] randomAngryResponses = {"I don't like you.", "Why did you choose soccer?"};
+	private String [] randomHappyResponses = {"How about we play soccer in the park?", "Today is a good day to play!", "I like you."};
 	
 }
