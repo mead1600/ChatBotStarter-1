@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -23,27 +24,31 @@ public class ChatBotRunner
 		System.out.println("Welcome to the sport chatbot, nice to meet you.");
 		String statement = in.nextLine();
         System.out.println("Which topic would you like to learn about? Soccer, Handball, Football, or Basketball");
+        statement = in.nextLine();
 
 		while (!statement.toLowerCase().equals("bye"))
 		{
-			while (statement.toLowerCase().equals("soccer"))
-			{
-				chatbot1.chatLoop(statement);
-				statement = in.nextLine();
+			try {
+				while (statement.toLowerCase().equals("soccer")) {
+					chatbot1.chatLoop(statement);
+					statement = in.nextLine();
+				}
+				while (statement.toLowerCase().equals("handball")) {
+					chatbot2.chatLoop(statement);
+					statement = in.nextLine();
+				}
+				while (statement.toLowerCase().equals("football")) {
+					chatbot3.chatLoop(statement);
+					statement = in.nextLine();
+				}
+				while (statement.toLowerCase().equals("basketball")) {
+					chatbot4.chatLoop(statement);
+					statement = in.nextLine();
+				}
 			}
-			while (statement.toLowerCase().equals("handball"))
+			catch(InputMismatchException e)
 			{
-				chatbot2.chatLoop(statement);
-				statement = in.nextLine();
-			}
-			while (statement.toLowerCase().equals("football"))
-			{
-				chatbot3.chatLoop(statement);
-				statement = in.nextLine();
-			}
-			while (statement.toLowerCase().equals("basketball"))
-			{
-				chatbot4.chatLoop(statement);
+				System.out.println("Please specify");
 				statement = in.nextLine();
 			}
 		}

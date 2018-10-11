@@ -9,6 +9,8 @@ import java.util.Scanner;
  */
 public class ChatBot2
 {
+	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
+	int emotion = 0;
 
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -26,40 +28,47 @@ public class ChatBot2
 
 			statement = in.nextLine();
 			//getResponse handles the user reply
-
+			System.out.println(getResponse(statement));
+			if(statement.toLowerCase().equals("switch"))
+			{
+				System.out.println("Which chatbot would you like to switch to? Soccer, Football, or Basketball?");
+				break;
+			}
 
 		}
 
 	}
 	/**
-	 * Get a default greeting 	
+	 * Get a default greeting
 	 * @return a greeting
-	 */	
+	 */
 	public String getGreeting()
 	{
-		System.out.println("Hi, I can answer your questions about handball");
-		return "do you have any questions about handball?";
-
+		System.out.println("Hi, I can answer any questions you have about handball.");
+		return "Do you have any questions?";
 	}
 
-	/*
 	/**
 	 * Gives a response to a user statement
-	 * 
+	 *
 	 * @param statement
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
-
 	public String getResponse(String statement)
 	{
 		String response = "";
-		
+
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";
 		}
 
+		else if (findKeyword(statement, "no") >= 0)
+		{
+			response = "Then why are you here?";
+			emotion--;
+		}
 
 		// Response transforming I want to statement
 		else if (findKeyword(statement, "I want to", 0) >= 0)
@@ -70,11 +79,15 @@ public class ChatBot2
 		{
 			response = transformIWantStatement(statement);
 		}
+		else
+		{
+			response = getRandomResponse();
+		}
+
 		return response;
 	}
-	
 	/**
-	 * Take a statement with "I want to <something>." and transform it into 
+	 * Take a statement with "I want to <something>." and transform it into
 	 * "Why do you want to <something>?"
 	 * @param statement the user statement, assumed to contain "I want to"
 	 * @return the transformed statement
@@ -95,9 +108,9 @@ public class ChatBot2
 		return "Why do you want to " + restOfStatement + "?";
 	}
 
-	
+
 	/**
-	 * Take a statement with "I want <something>." and transform it into 
+	 * Take a statement with "I want <something>." and transform it into
 	 * "Would you really be happy if you had <something>?"
 	 * @param statement the user statement, assumed to contain "I want"
 	 * @return the transformed statement
@@ -117,10 +130,10 @@ public class ChatBot2
 		String restOfStatement = statement.substring(psn + 6).trim();
 		return "Would you really be happy if you had " + restOfStatement + "?";
 	}
-	
-	
+
+
 	/**
-	 * Take a statement with "I <something> you" and transform it into 
+	 * Take a statement with "I <something> you" and transform it into
 	 * "Why do you <something> me?"
 	 * @param statement the user statement, assumed to contain "I" followed by "you"
 	 * @return the transformed statement
@@ -136,17 +149,17 @@ public class ChatBot2
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		
+
 		int psnOfI = findKeyword (statement, "I", 0);
 		int psnOfYou = findKeyword (statement, "you", psnOfI);
-		
+
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
 		return "Why do you " + restOfStatement + " me?";
 	}
-	
 
-	
-	
+
+
+
 	/**
 	 * Search for one word in phrase. The search is not case
 	 * sensitive. This method will check that the given goal
@@ -164,7 +177,7 @@ public class ChatBot2
 	 *         statement or -1 if it's not found
 	 */
 	private int findKeyword(String statement, String goal,
-			int startPos)
+							int startPos)
 	{
 		String phrase = statement.trim().toLowerCase();
 		goal = goal.toLowerCase();
@@ -195,9 +208,9 @@ public class ChatBot2
 			// found the word
 			if (((before.compareTo("a") < 0) || (before
 					.compareTo("z") > 0)) // before is not a
-											// letter
+					// letter
 					&& ((after.compareTo("a") < 0) || (after
-							.compareTo("z") > 0)))
+					.compareTo("z") > 0)))
 			{
 				return psn;
 			}
@@ -210,11 +223,11 @@ public class ChatBot2
 
 		return -1;
 	}
-	
+
 	/**
 	 * Search for one word in phrase.  The search is not case sensitive.
 	 * This method will check that the given goal is not a substring of a longer string
-	 * (so, for example, "I know" does not contain "no").  The search begins at the beginning of the string.  
+	 * (so, for example, "I know" does not contain "no").  The search begins at the beginning of the string.
 	 * @param statement the string to search
 	 * @param goal the string to search for
 	 * @return the index of the first occurrence of goal in statement or -1 if it's not found
@@ -224,9 +237,23 @@ public class ChatBot2
 		return findKeyword (statement, goal, 0);
 	}
 
+
+
+	/**
+	 * Pick a default response to use if nothing else fits.
+	 * @return a non-committal string
+	 */
 	private String getRandomResponse ()
 	{
 		Random r = new Random ();
+		if (emotion == 0)
+		{
+			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
+		}
+		if (emotion < 0)
+		{
+			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
+		}
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 
@@ -240,5 +267,5 @@ public class ChatBot2
 	};
 	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
-	
+
 }
