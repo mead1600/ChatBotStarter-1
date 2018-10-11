@@ -23,6 +23,7 @@ public class ChatBotRunner
 		System.out.println("Welcome to the sport chatbot, nice to meet you.");
 		String statement = in.nextLine();
         System.out.println("Which topic would you like to learn about? Soccer, Handball, Football, or Basketball");
+        statement = in.nextLine();
 
 		while (!statement.toLowerCase().equals("bye"))
 		{
