@@ -46,6 +46,7 @@ public class ChatBotRunner
 					statement = in.nextLine();
 				}
 			}
+
 			catch(InputMismatchException e)
 			{
 				System.out.println("Please specify");
