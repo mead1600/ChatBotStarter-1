@@ -45,8 +45,13 @@ public class ChatBotRunner
 					chatbot4.chatLoop(statement);
 					statement = in.nextLine();
 				}
-			}
+				if(!statement.toLowerCase().equals("soccer") || !statement.toLowerCase().equals("handball") || !statement.toLowerCase().equals("football") || !statement.toLowerCase().equals("basketball"))
+				{
+					System.out.println("Please specify");
+					statement = in.nextLine();
+				}
 
+			}
 			catch(InputMismatchException e)
 			{
 				System.out.println("Please specify");
