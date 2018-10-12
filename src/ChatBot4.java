@@ -41,8 +41,7 @@ public class ChatBot4
      * Get a default greeting
      * @return a greeting
      */
-    public String getGreeting()
-    {
+    public String getGreeting(){
         return "Hi, what is up?";
     }
 
@@ -59,18 +58,18 @@ public class ChatBot4
 
         if (statement.length() == 0)
         {
-            response = "Say something, please.";
+            response = "What you don't wanna talk about basketball?";
         }
 
         else if (findKeyword(statement, "no") >= 0)
         {
-            response = "Why so negative?";
+            response = "Why, what's wrong?";
             emotion--;
         }
 
-        else if (findKeyword(statement, "levin") >= 0)
+        else if (findKeyword(statement, "MJ is cool") >= 0)
         {
-            response = "More like LevinTheDream amiright?";
+            response = "Wow I think so too! >///<";
             emotion++;
         }
 
@@ -134,6 +133,12 @@ public class ChatBot4
         int psn = findKeyword (statement, "I want", 0);
         String restOfStatement = statement.substring(psn + 6).trim();
         return "Would you really be happy if you had " + restOfStatement + "?";
+    }
+
+    private String transformWhaDoYouThink(String statement){
+        statement = statement.trim();
+        String lastChar = statement.substring(statement.length() - 1);
+        if
     }
 
 
@@ -266,11 +271,11 @@ public class ChatBot4
             "Hmmm.",
             "Do you really think so?",
             "You don't say.",
-            "It's all boolean to me.",
-            "So, would you like to go for a walk?",
+            "It's all the same to me.",
+            "Well, do you wanna play a quick game with me?",
             "Could you say that again?"
     };
-    private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-    private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+    private String [] randomAngryResponses = {"R e a l l y.", "hmmst", "Play me one one one then punk!"};
+    private String [] randomHappyResponses = {"Its a good day to play basketball right?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
 
 }
