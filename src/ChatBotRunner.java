@@ -23,7 +23,7 @@ public class ChatBotRunner
 		Scanner in = new Scanner (System.in);
 		System.out.println("Welcome to the sport chatbot, nice to meet you.");
 		String statement = in.nextLine();
-        System.out.println("Which topic would you like to learn about? Soccer, Handball, Football, or Basketball");
+        System.out.println("Which sport do you like? Soccer, Handball, Football, or Basketball");
         statement = in.nextLine();
 
 		while (!statement.toLowerCase().equals("bye"))
@@ -45,8 +45,13 @@ public class ChatBotRunner
 					chatbot4.chatLoop(statement);
 					statement = in.nextLine();
 				}
-			}
+				if(!statement.toLowerCase().equals("soccer") || !statement.toLowerCase().equals("handball") || !statement.toLowerCase().equals("football") || !statement.toLowerCase().equals("basketball"))
+				{
+					System.out.println("Please specify");
+					statement = in.nextLine();
+				}
 
+			}
 			catch(InputMismatchException e)
 			{
 				System.out.println("Please specify");
