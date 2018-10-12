@@ -21,7 +21,7 @@ public class ChatBotRunner
 
 
 		Scanner in = new Scanner (System.in);
-		System.out.println("Chat like a normal person please!\n\nWelcome to the sport chatbot, nice to meet you.");
+		System.out.println("Welcome to the sport chatbot, nice to meet you.");
 		String statement = in.nextLine();
         System.out.println("Which topic would you like to talk about? Soccer, Handball, Football, or Basketball");
         statement = in.nextLine();
@@ -50,6 +50,7 @@ public class ChatBotRunner
 					System.out.println("Please specify");
 					statement = in.nextLine();
 				}
+
 			}
 			catch(InputMismatchException e)
 			{
