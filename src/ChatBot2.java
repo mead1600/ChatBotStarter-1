@@ -19,7 +19,9 @@ public class ChatBot2
 	public void chatLoop(String statement)
 	{
 		Scanner in = new Scanner (System.in);
+		System.out.println (help());
 		System.out.println (getGreeting());
+
 
 
 		while (!statement.equals("Bye"))
@@ -27,13 +29,18 @@ public class ChatBot2
 
 
 			statement = in.nextLine();
-			//getResponse handles the user reply
-			System.out.println(getResponse(statement));
 			if(statement.toLowerCase().equals("switch"))
 			{
 				System.out.println("Which chatbot would you like to switch to? Soccer, Football, or Basketball?");
 				break;
 			}
+			//getResponse handles the user reply
+			if(statement.toLowerCase().equals("quit"))
+			{
+				System.out.println("Have a nice day");
+				System.exit(1);
+			}
+			System.out.println(getResponse(statement));
 
 		}
 
@@ -46,6 +53,10 @@ public class ChatBot2
 	{
 		System.out.println("Hi, I can answer any questions you have about handball.");
 		return "Do you have any questions?";
+	}
+	public String help()
+	{
+		return"\033[1mtype: \"switch\" to switch to other chatbots \ntype: \"quit\" to stop chatting \nEnjoy!\n\033[0m";
 	}
 
 	/**
@@ -261,11 +272,10 @@ public class ChatBot2
 			"Hmmm.",
 			"Do you really think so?",
 			"You don't say.",
-			"It's all boolean to me.",
 			"So, would you like to go for a walk?",
 			"Could you say that again?"
 	};
-	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
+	private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "you're garbage", "stop talking to me"};
 	private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
 
 }
