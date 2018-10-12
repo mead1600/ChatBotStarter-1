@@ -28,8 +28,12 @@ public class ChatBot1
 
 			statement = in.nextLine();
 			//getResponse handles the user reply
+			if(statement.toLowerCase().equals("switch"))
+			{
+				System.out.println("Which chatbot would you like to switch to? Handball, Football, or Basketball?");
+				break;
+			}
 			System.out.println(getResponse(statement));
-
 
 		}
 
@@ -40,7 +44,7 @@ public class ChatBot1
 	 */	
 	public String getGreeting()
 	{
-		return "What a coincidence, I like soccer too! ";
+		return "What a coincidence, I like soccer too! Do you often play soccer? ";
 	}
 	
 	/**
@@ -64,7 +68,11 @@ public class ChatBot1
 			response = "Why not?";
 			emotion--;
 		}
-		
+		else if (findKeyword(statement, "ok") >= 0)
+		{
+			response = "Good choice!";
+			emotion++;
+		}
 		else if (findKeyword(statement, "yes") >= 0)
 		{
 			response = "Why so?";
@@ -99,9 +107,19 @@ public class ChatBot1
 		{
 			response = transformIWantToStatement(statement);
 		}
-		else if (findKeyword(statement, "I want to",0) >= 0)
+		else if (findKeyword(statement, "you", 0) >= 0)
 		{
-			response = transformIWantStatement(statement);
+			response = transformYouStatement(statement);
+		}
+		else if (findKeyword(statement, "I",0) >= 0)
+		{
+			if (findKeyword(statement, "you") >= 0)
+			{
+				response = 	transformIYouStatement(statement);
+			}
+			else {
+				response = transformIWantStatement(statement);
+			}
 		}
         else
 		{
@@ -133,7 +151,21 @@ public class ChatBot1
 		return "Why do you love to " + restOfStatement + "?";
 	}
 
-	
+	private String transformYouStatement(String statement)
+	{
+		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "you said", 0);
+		String restOfStatement = statement.substring(psn + 8).trim();
+		return "Did I say " + restOfStatement + "?";
+	}
 	/**
 	 * Take a statement with "I want <something>." and transform it into 
 	 * "Would you really be happy if you had <something>?"
@@ -151,9 +183,9 @@ public class ChatBot1
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I want to ", 0);
-		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you want to " + restOfStatement + "?";
+		int psn = findKeyword (statement, "I", 0);
+		String restOfStatement = statement.substring(psn + 1).trim();
+		return "Why do you " + restOfStatement + "?";
 	}
 	
 	
@@ -174,12 +206,12 @@ public class ChatBot1
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		
+
 		int psnOfI = findKeyword (statement, "I", 0);
 		int psnOfYou = findKeyword (statement, "you", psnOfI);
-		
+
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-		return "Why do you " + restOfStatement + "me?";
+		return "Why do you " + restOfStatement + " me?";
 	}
 	
 
@@ -282,13 +314,14 @@ public class ChatBot1
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 	
-	private String [] randomNeutralResponses = {"Interesting, tell me more",
-			"Do you really think so?",
+	private String [] randomNeutralResponses = {"Tell me more.",
+			"Cool!",
 			"So, would you like to play soccer with me?",
-            "That's interesting."
+            "That's interesting.",
+			"Say it again."
 
 	};
-	private String [] randomAngryResponses = {"I don't like you.", "Why did you choose soccer?"};
-	private String [] randomHappyResponses = {"How about we play soccer in the park?", "Today is a good day to play!", "I like you."};
+	private String [] randomAngryResponses = {"Why did you choose soccer?", "You should switch", "You sound like you aren't good in soccer.", "You are probably trash in soccer."};
+	private String [] randomHappyResponses = {"How about we play soccer in the park?", "Today is a good day to play!", "Do you want to play soccer today?"};
 	
 }
