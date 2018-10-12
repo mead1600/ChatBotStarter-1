@@ -30,7 +30,7 @@ public class ChatBot3
 
 			statement = in.nextLine();
 			//getResponse handles the user reply
-			System.out.println(getResponse(statement));
+			System.out.println(teamQuestions(statement));
 
 
 		}
@@ -42,7 +42,30 @@ public class ChatBot3
 	 */	
 	public String getGreeting()
 	{
-		return "Hi, what is up?";
+		return "What is your favorite football team?";
+	}
+
+	public String teamQuestions(String statement)
+	{
+		String response = "";
+		if (statement.length() == 0)
+		{
+			response = "Say something, please.";
+		}
+		else if (statement.equals("I don't have a favorite team"))
+		{
+			response = transformIDontToStatement(statement);
+		}
+		else if (statement.equals("I dont have a favorite team" ))
+		{
+			String tempWord = statement.substring(0,5) + "'" + statement.substring(5);
+			response = transformIDontToStatement(tempWord);
+		}
+		else
+		{
+			response = teamResponse(statement);
+		}
+		return response;
 	}
 	
 	/**
@@ -52,7 +75,7 @@ public class ChatBot3
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
-	public String getResponse(String statement)
+	/*public String getResponse(String statement)
 	{
 		String response = "";
 		
@@ -88,8 +111,35 @@ public class ChatBot3
 		}
 		
 		return response;
+	}*/
+
+	private String transformIDontToStatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "I dont", 0);
+		return "Why don't you have a favorite team?";
 	}
-	
+
+	private String teamResponse(String statement)
+	{
+		double questionNum = Math.random();
+		if(questionNum >= 0.5)
+		{
+			return "Why is " + statement + " your favorite team?";
+		}
+		else
+		{
+			return "Would you like to go with me to a " + statement + "'s game?";
+		}
+	}
+
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
 	 * "Why do you want to <something>?"
