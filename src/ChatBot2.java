@@ -40,33 +40,28 @@ public class ChatBot2
 				System.out.println("Have a nice day");
 				System.exit(1);
 			}
-			while(!statement.toLowerCase().equals("no") || !statement.toLowerCase().equals("yes"))
-			{
-				System.out.println("Answer yes or no please");
-				statement = in.nextLine();
-			}
 			if(statement.toLowerCase().equals("no"))
 			{
 				System.out.println("Would you like to chat with another bot?");
 				statement = in.nextLine();
 				while(!statement.toLowerCase().equals("no") || !statement.toLowerCase().equals("yes"))
 				{
-					System.out.println("Answer yes or no please");
-					statement = in.nextLine();
-				}
-				if (statement.toLowerCase().equals("no"))
-				{
-					System.out.println("Have a nice day");
-					System.exit(1);
-				}
-				else if (statement.toLowerCase().equals("yes"))
-				{
-					System.out.println("which bot would you like to talk to? Soccer, Football, or Basketball?");
+					if (statement.toLowerCase().equals("no"))
+					{
+						System.out.println("Have a nice day");
+						System.exit(1);
+					}
+					else if (statement.toLowerCase().equals("yes"))
+					{
+						System.out.println("which bot would you like to talk to? Soccer, Football, or Basketball?");
+						break;
+					}
 					break;
 				}
-			}
 
-			System.out.println(getResponse(statement));
+			}
+			else
+				System.out.println(getResponse(statement));
 
 		}
 
