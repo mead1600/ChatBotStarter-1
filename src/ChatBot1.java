@@ -84,7 +84,7 @@ public class ChatBot1
 		}
 		else if (findKeyword(statement, "It is fun") >= 0)
 		{
-			response = "Yes, it is fun!";
+			response = "Yes, it is fun! How fun is it?";
 			emotion++;
 		}
 		else if (findKeyword(statement, "I don't like soccer") >= 0)
@@ -320,8 +320,35 @@ public class ChatBot1
             "That's interesting.",
 			"Say it again."
 
+
+
 	};
-	private String [] randomAngryResponses = {"Why did you choose soccer?", "You should switch", "You sound like you aren't good in soccer.", "You are probably trash in soccer."};
+	private String [] randomAngryResponses = {"Why did you choose soccer?", "You should switch to another sport", "You sound like you aren't good in soccer.", "You are probably trash in soccer."};
 	private String [] randomHappyResponses = {"How about we play soccer in the park?", "Today is a good day to play!", "Do you want to play soccer today?"};
+	private String [] FinishResponses = {"Ok! See you there!"};
 	
-}
+	
+
+	private String Response(String statement)
+	{
+		String response2 = "";
+		Random r = new Random();
+
+		if (findKeyword(statement, "Yes") >= 0) 
+		{
+			return FinishResponses[r.nextInt(FinishResponses.length)];
+		}
+		if (findKeyword(statement, "ok") >= 0) {
+			return FinishResponses[r.nextInt(FinishResponses.length)];
+		}	
+		else if (findKeyword(statement, "No") >= 0) 
+		{ 
+			return randomAngryResponses[r.nextInt(randomAngryResponses.length)];
+		} else 
+			{
+			response2 = "Yes or No?";
+		}
+		return FinishResponses[r.nextInt(FinishResponses.length)];
+	}
+}	
+
