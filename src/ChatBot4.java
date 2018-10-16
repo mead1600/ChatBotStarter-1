@@ -42,7 +42,7 @@ public class ChatBot4
      * @return a greeting
      */
     public String getGreeting(){
-        return "Hi, what is up?";
+        return "Hi, I was hoping to find someone else who liked basketball!";
     }
 
     /**
@@ -58,7 +58,7 @@ public class ChatBot4
 
         if (statement.length() == 0)
         {
-            response = "What you don't wanna talk about basketball?";
+            response = "What, you don't wanna talk?";
         }
 
         else if (findKeyword(statement, "no") >= 0)
@@ -135,11 +135,11 @@ public class ChatBot4
         return "Would you really be happy if you had " + restOfStatement + "?";
     }
 
-    private String transformWhaDoYouThink(String statement){
-        statement = statement.trim();
-        String lastChar = statement.substring(statement.length() - 1);
-        if
-    }
+//    private String transformWhaDoYouThink(String statement){
+//        statement = statement.trim();
+//        String lastChar = statement.substring(statement.length() - 1);
+//        if
+//    }
 
 
     /**
@@ -268,14 +268,15 @@ public class ChatBot4
     }
 
     private String [] randomNeutralResponses = {"Interesting, tell me more",
-            "Hmmm.",
-            "Do you really think so?",
+            "Who's your favorite Basketball player?",
+            "Oh Really?",
+            "Wake me up!",
             "You don't say.",
             "It's all the same to me.",
             "Well, do you wanna play a quick game with me?",
-            "Could you say that again?"
+            "Say that one more time."
     };
-    private String [] randomAngryResponses = {"R e a l l y.", "hmmst", "Play me one one one then punk!"};
+    private String [] randomAngryResponses = {"R e a l l y.", "Why would you say something like that!?", "Play me one on one then!"};
     private String [] randomHappyResponses = {"Its a good day to play basketball right?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
 
 }
