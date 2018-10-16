@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ public class ChatBot2
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
+	String[] emotions = {"Pleasant Feelings","OPEN","HAPPY","ALIVE","GOOD","understanding","great","playful","calm","confident","gay","courageous","peaceful","reliable","joyous","energetic","at ease","easy","lucky","liberated","comfortable","amazed","fortunate","optimistic","pleased","free","delighted","provocative","encouraged","sympathetic","overjoyed","impulsive","clever","interested","gleeful","free","surprised","satisfied","thankful","frisky","content","receptive","important","animated","quiet","accepting","festive","spirited","certain","kind","ecstatic","thrilled","relaxed","satisfied","wonderful","serene","glad","free and easy ","cheerful ","bright ","sunny ","blessed ","merry ","reassured ","elated  ","jubilant","LOVE","INTERESTED","POSITIVE","STRONG","loving","concerned","eager","impulsive","considerate","affected","keen","free","affectionate","fascinated","earnest","sure","sensitive","intrigued","intent","certain","tender","absorbed","anxious","rebellious","devoted","inquisitive","inspired","unique","attracted","nosy","determined","dynamic","passionate","snoopy","excited","tenacious","admiration","engrossed","enthusiastic","hardy","warm","curious","bold","secure","touched ","brave ","sympathy ","daring ","close ","challenged ","loved ","optimistic ","comforted","re-enforced ","drawn toward","confident ","hopeful","Difficult/Unpleasant Feelings","ANGRY","DEPRESSED","CONFUSED","HELPLESS","irritated","lousy","upset","incapable","enraged","disappointed","doubtful","alone","hostile","discouraged","uncertain","paralyzed","insulting","ashamed","indecisive","fatigued","sore","powerless","perplexed","useless","annoyed","diminished","embarrassed","inferior","upset","guilty","hesitant","vulnerable","hateful","dissatisfied","shy","empty","unpleasant","miserable","stupefied","forced","offensive","detestable","disillusioned","hesitant","bitter","repugnant","unbelieving","despair","aggressive","despicable","skeptical","frustrated","resentful","disgusting","distrustful","distressed","inflamed","abominable","misgiving","woeful","provoked","terrible","lost","pathetic","incensed","in despair","unsure","tragic","infuriated","sulky","uneasy","in a stew","cross","bad","pessimistic","dominated","worked up","a sense of loss","tense","boiling","fuming","indignant","INDIFFERENT","AFRAID","HURT","SAD","insensitive","fearful","crushed","tearful","dull","terrified","tormented","sorrowful","nonchalant","suspicious","deprived","pained","neutral","anxious","pained","grief","reserved","alarmed","tortured","anguish","weary","panic","dejected","desolate","bored","nervous","rejected","desperate","preoccupied","scared","injured","pessimistic","cold","worried","offended","unhappy","disinterested","frightened","afflicted","lonely","lifeless","timid","aching","grieved","shaky","victimized","mournful","restless","heartbroken","dismayed","doubtful","agonized ","threatened","appalled ","cowardly","humiliated ","quaking","wronged ","menaced","alienated ","wary"};
 
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -27,7 +29,6 @@ public class ChatBot2
 		while (!statement.equals("Bye"))
 		{
 
-
 			statement = in.nextLine();
 			if(statement.toLowerCase().equals("switch"))
 			{
@@ -40,27 +41,6 @@ public class ChatBot2
 				System.out.println("Have a nice day");
 				System.exit(1);
 			}
-			if(statement.toLowerCase().equals("no"))
-			{
-				System.out.println("Would you like to chat with another bot?");
-				statement = in.nextLine();
-				while(!statement.toLowerCase().equals("no") || !statement.toLowerCase().equals("yes"))
-				{
-					if (statement.toLowerCase().equals("no"))
-					{
-						System.out.println("Have a nice day");
-						System.exit(1);
-					}
-					else if (statement.toLowerCase().equals("yes"))
-					{
-						System.out.println("which bot would you like to talk to? Soccer, Football, or Basketball?");
-						break;
-					}
-					break;
-				}
-
-			}
-			else
 				System.out.println(getResponse(statement));
 
 		}
@@ -72,12 +52,12 @@ public class ChatBot2
 	 */
 	public String getGreeting()
 	{
-		System.out.println("Hi, I can answer any questions you have about handball.");
-		return "Do you have any questions?";
+		System.out.println("Hello, I'm the handball bot.");
+		return "How are you feeling?";
 	}
 	public String help()
 	{
-		return"\033[1mtype: \"switch\" to switch to other chatbots \ntype: \"quit\" to stop chatting \nEnjoy!\n\033[0m";
+		return"\n\033[1mtype: \"switch\" to switch to other chatbots \ntype: \"quit\" to stop chatting \nEnjoy!\n\033[0m";
 	}
 
 	/**
@@ -110,6 +90,13 @@ public class ChatBot2
 		else if (findKeyword(statement, "I want",0) >= 0)
 		{
 			response = transformIWantStatement(statement);
+		}
+
+		else if()
+		for(int i=0;i<emotions.length;i++)
+		{
+			(findKeyword(statement, emotions[i], 0)>=0));
+			response = transformEmotion(statement);
 		}
 		else
 		{
@@ -161,6 +148,26 @@ public class ChatBot2
 		int psn = findKeyword (statement, "I want", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
 		return "Would you really be happy if you had " + restOfStatement + "?";
+	}
+	private String transformEmotion(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+
+
+		for(int i = 0;i<emotions.length;i++)
+		{
+			int feeling = findKeyword(statement, emotions[i], 0);
+			String restOfStatement = statement.substring(feeling + 1).trim();
+			return "Why are you feeling " + restOfStatement + "today?";
+		}
+			return "";
 	}
 
 
