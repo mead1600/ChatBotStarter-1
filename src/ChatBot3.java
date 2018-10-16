@@ -65,54 +65,9 @@ public class ChatBot3
 		{
 			response = teamResponse(statement);
 		}
-		return response;
+		System.out.println(response);
+
 	}
-	
-	/**
-	 * Gives a response to a user statement
-	 * 
-	 * @param statement
-	 *            the user statement
-	 * @return a response based on the rules given
-	 */
-	/*public String getResponse(String statement)
-	{
-		String response = "";
-		
-		if (statement.length() == 0)
-		{
-			response = "Say something, please.";
-		}
-
-		else if (findKeyword(statement, "no") >= 0)
-		{
-			response = "Why so negative?";
-                	emotion--;
-		}
-		
-		else if (findKeyword(statement, "levin") >= 0)
-		{
-			response = "More like LevinTheDream amiright?";
-			emotion++;
-		}
-
-		// Response transforming I want to statement
-		else if (findKeyword(statement, "I want to", 0) >= 0)
-		{
-			response = transformIWantToStatement(statement);
-		}
-		else if (findKeyword(statement, "I want",0) >= 0)
-		{
-			response = transformIWantStatement(statement);
-		}	
-		else
-		{
-			response = getRandomResponse();
-		}
-		
-		return response;
-	}*/
-
 	private String transformIDontToStatement(String statement)
 	{
 		statement = statement.trim();
@@ -123,7 +78,6 @@ public class ChatBot3
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-		int psn = findKeyword (statement, "I dont", 0);
 		return "Why don't you have a favorite team?";
 	}
 
@@ -140,6 +94,66 @@ public class ChatBot3
 		}
 	}
 
+	private String finalEnthusiasticResponse(String response)
+	{
+		Scanner reason = new  Scanner(System.in);
+		String reasonOut = reason.nextLine();
+		if(response.substring(0,6).equals("Why is"))
+		{
+			return "Man, I'm glad that you have a team that you can love that much";
+		}
+		else if(response.substring(0,6).equals("Would "))
+		{
+			if(reasonOut.toLowerCase().equals("no"))
+			{
+				return "Oh ok. I just wanted a friend to hang out with :(";
+			}
+			else if(reasonOut.toLowerCase().equals("nope"))
+			{
+				return "Oh ok. I just wanted a friend to hang out with :(";
+			}
+			else if(reasonOut.toLowerCase().equals("nah"))
+			{
+				return "Oh ok. I just wanted a friend to hang out with :(";
+			}
+			else if(reasonOut.toLowerCase().equals("naw"))
+			{
+				return "Oh ok. I just wanted a friend to hang out with :(";
+			}
+			else if(reasonOut.toLowerCase().equals("yes"))
+			{
+				return "AWSOME! ITS GONNA BE A BLAST";
+			}
+			else if(reasonOut.toLowerCase().equals("yep"))
+			{
+				return "AWSOME! ITS GONNA BE A BLAST";
+			}
+			else if(reasonOut.toLowerCase().equals("yeah"))
+			{
+				return "AWSOME! ITS GONNA BE A BLAST";
+			}
+			else if(reasonOut.toLowerCase().equals("uh huh"))
+			{
+				return "AWSOME! ITS GONNA BE A BLAST";
+			}
+			else if(reasonOut.toLowerCase().equals("yas"))
+			{
+				return "AWSOME! ITS GONNA BE A BLAST";
+			}
+			else if(reasonOut.toLowerCase().equals("yassssssssssssssssssss"))
+			{
+				return "AWSOME! ITS GONNA BE A BLAST";
+			}
+			else
+			{
+				return "please answer my question :(";
+			}
+		}
+		else
+		{
+			return "please answer my question :(";
+		}
+	}
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
 	 * "Why do you want to <something>?"
