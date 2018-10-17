@@ -32,7 +32,12 @@ public class ChatBot4
             System.out.println(getResponse(statement));
             if(statement.equalsIgnoreCase("basketball")){
                 System.out.println("Hi there, do you like basketball?");
+            } else if(statement.toLowerCase().equals("switch"))
+            {
+                System.out.println("Which chatbot would you like to switch to? Handball, Football, or Basketball?");
+                break;
             }
+            System.out.println(getResponse(statement));
 
         }
 
@@ -81,6 +86,10 @@ public class ChatBot4
         else if (findKeyword(statement, "I want",0) >= 0)
         {
             response = transformIWantStatement(statement);
+        }
+        else if (findKeyword(statement, "Do you want", 0) >= 0)
+        {
+            response = transformDoYouLikeStatement(statement);
         }
         else
         {
@@ -133,6 +142,20 @@ public class ChatBot4
         int psn = findKeyword (statement, "I want", 0);
         String restOfStatement = statement.substring(psn + 6).trim();
         return "Would you really be happy if you had " + restOfStatement + "?";
+    }
+
+    private String transformDoYouLikeStatement(String statement){
+        //  Remove the final period, if there is one
+        statement = statement.trim();
+        String lastChar = statement.substring(statement
+                .length() - 1);
+        if (lastChar.equals("?"))
+        {
+            statement = statement.substring(0, statement.length() - 1);
+        }
+        int psn = findKeyword (statement, "Do you like", 0);
+        String restOfStatement = statement.substring(psn + 9).trim();
+        return "Why do you like " + restOfStatement + "?";
     }
 
 //    private String transformWhaDoYouThink(String statement){
