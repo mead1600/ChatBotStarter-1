@@ -11,6 +11,7 @@ public class ChatBot1
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
+	int respond = 0;
 
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -304,13 +305,13 @@ public class ChatBot1
 	{
 		Random r = new Random ();
 		if (emotion == 0)
-		{	
+		{
 			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
 		}
 		if (emotion < 0)
-		{	
+		{
 			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-		}	
+		}
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 	
@@ -327,7 +328,7 @@ public class ChatBot1
 	private String [] randomHappyResponses = {"How about we play soccer in the park?", "Today is a good day to play!", "Do you want to play soccer today?"};
 	private String [] FinishResponses = {"Ok! See you there!"};
 	
-	
+
 
 	private String Response(String statement)
 	{
@@ -336,19 +337,32 @@ public class ChatBot1
 
 		if (findKeyword(statement, "Yes") >= 0) 
 		{
-			return FinishResponses[r.nextInt(FinishResponses.length)];
+			respond++;
 		}
 		if (findKeyword(statement, "ok") >= 0) {
-			return FinishResponses[r.nextInt(FinishResponses.length)];
+            respond++;
 		}	
 		else if (findKeyword(statement, "No") >= 0) 
-		{ 
-			return randomAngryResponses[r.nextInt(randomAngryResponses.length)];
+		{
+            respond--;
 		} else 
 			{
 			response2 = "Yes or No?";
 		}
-		return FinishResponses[r.nextInt(FinishResponses.length)];
+		return decide();
 	}
+
+    private String decide()
+    {
+        Random r = new Random();
+        if (respond > 0)
+        {
+            return FinishResponses[r.nextInt(FinishResponses.length)];
+        }
+        else
+        {
+            return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
+        }
+    }
 }	
 
