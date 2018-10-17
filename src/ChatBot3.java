@@ -65,9 +65,9 @@ public class ChatBot3
 		{
 			response = teamResponse(statement);
 		}
-		System.out.println(response);
-
-	}
+			System.out.println(response);
+			return"SMD";
+		}
 	private String transformIDontToStatement(String statement)
 	{
 		statement = statement.trim();
