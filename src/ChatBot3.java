@@ -51,22 +51,25 @@ public class ChatBot3
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";
+			return response;
 		}
 		else if (statement.equals("I don't have a favorite team"))
 		{
 			response = transformIDontToStatement(statement);
+			return response;
 		}
 		else if (statement.equals("I dont have a favorite team" ))
 		{
 			String tempWord = statement.substring(0,5) + "'" + statement.substring(5);
 			response = transformIDontToStatement(tempWord);
+			return response;
 		}
-		else
-		{
+		else{
 			response = teamResponse(statement);
-		}
 			System.out.println(response);
-			return"SMD";
+			return finalEnthusiasticResponse(response);
+			}
+
 		}
 	private String transformIDontToStatement(String statement)
 	{
@@ -84,6 +87,7 @@ public class ChatBot3
 	private String teamResponse(String statement)
 	{
 		double questionNum = Math.random();
+		String response = "";
 		if(questionNum >= 0.5)
 		{
 			return "Why is " + statement + " your favorite team?";
@@ -153,6 +157,21 @@ public class ChatBot3
 		{
 			return "please answer my question :(";
 		}
+	}
+	private String transformBecauseStatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "because", 0);
+		String restOfStatement = statement.substring(psn + 6).trim();
+		if(statement.substring(8,16).equals("they are"))
+		return "Why";
 	}
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
