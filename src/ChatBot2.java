@@ -16,8 +16,9 @@ public class ChatBot2
 	String[] emotions = {"Pleasant Feelings","mad","OPEN","fine","HAPPY","ALIVE","GOOD","understanding","great","playful","calm","confident","gay","courageous","peaceful","reliable","joyous","energetic","at ease","easy","lucky","liberated","comfortable","amazed","fortunate","optimistic","pleased","free","delighted","provocative","encouraged","sympathetic","overjoyed","impulsive","clever","interested","gleeful","free","surprised","satisfied","thankful","frisky","content","receptive","important","animated","quiet","accepting","festive","spirited","certain","kind","ecstatic","thrilled","relaxed","satisfied","wonderful","serene","glad","free and easy ","cheerful ","bright ","sunny ","blessed ","merry ","reassured ","elated  ","jubilant","LOVE","INTERESTED","POSITIVE","STRONG","loving","concerned","eager","impulsive","considerate","affected","keen","free","affectionate","fascinated","earnest","sure","sensitive","intrigued","intent","certain","tender","absorbed","anxious","rebellious","devoted","inquisitive","inspired","unique","attracted","nosy","determined","dynamic","passionate","snoopy","excited","tenacious","admiration","engrossed","enthusiastic","hardy","warm","curious","bold","secure","touched ","brave ","sympathy ","daring ","close ","challenged ","loved ","optimistic ","comforted","re-enforced ","drawn toward","confident ","hopeful","Difficult/Unpleasant Feelings","ANGRY","DEPRESSED","CONFUSED","HELPLESS","irritated","lousy","upset","incapable","enraged","disappointed","doubtful","alone","hostile","discouraged","uncertain","paralyzed","insulting","ashamed","indecisive","fatigued","sore","powerless","perplexed","useless","annoyed","diminished","embarrassed","inferior","upset","guilty","hesitant","vulnerable","hateful","dissatisfied","shy","empty","unpleasant","miserable","stupefied","forced","offensive","detestable","disillusioned","hesitant","bitter","repugnant","unbelieving","despair","aggressive","despicable","skeptical","frustrated","resentful","disgusting","distrustful","distressed","inflamed","abominable","misgiving","woeful","provoked","terrible","lost","pathetic","incensed","in despair","unsure","tragic","infuriated","sulky","uneasy","in a stew","cross","bad","pessimistic","dominated","worked up","a sense of loss","tense","boiling","fuming","indignant","INDIFFERENT","AFRAID","HURT","SAD","insensitive","fearful","crushed","tearful","dull","terrified","tormented","sorrowful","nonchalant","suspicious","deprived","pained","neutral","anxious","pained","grief","reserved","alarmed","tortured","anguish","weary","panic","dejected","desolate","bored","nervous","rejected","desperate","preoccupied","scared","injured","pessimistic","cold","worried","offended","unhappy","disinterested","frightened","afflicted","lonely","lifeless","timid","aching","grieved","shaky","victimized","mournful","restless","heartbroken","dismayed","doubtful","agonized ","threatened","appalled ","cowardly","humiliated ","quaking","wronged ","menaced","alienated ","wary"};
 	String[] timePastTense = {"yesterday","last week","past week"};
 	String[] time= {"now","right now"};
-	String[] yes = {"ye","yah","yep","yeh","yuh","yes"};
+	String[] yes = {"ye","yah","yep","yeh","yuh","yes","YES"};
 	String[] no = {"nah","nope","nop","naw","nu","no"};
+	String temp;
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -100,7 +101,7 @@ public class ChatBot2
 			System.out.println(transformEmotion(statement));
 		}
 		else if (Arrays.stream(yes).filter(v -> statement.toLowerCase().indexOf(v.toLowerCase()) > -1).count() > 0) {
-			System.out.println("What about handball makes you feel" + findEmotion(statement));
+			System.out.println("What about handball makes you feel " + temp);
 		}
 		else if (Arrays.stream(no).filter(v -> statement.toLowerCase().indexOf(v.toLowerCase()) > -1).count() > 0) {
 			System.out.println("I don't care about you then D:");
@@ -142,21 +143,20 @@ public class ChatBot2
 	 * @param statement the user statement, assumed to contain "I want"
 	 * @return the transformed statement
 	 */
-	private String findEmotion(String statement)
+	private void findEmotion(String statement)
 	{
-		String feelin;
 		if(Arrays.stream(emotions).filter(v -> statement.toLowerCase().indexOf(v.toLowerCase()) > -1).count() > 0)
 		{
 			for(int i = 0;i<emotions.length;i++)
 			{
 				if(statement.contains(emotions[i]))
 				{
-					feelin = emotions[i];
-					System.out.println(feelin);
+					String feelin = emotions[i];
+					System.out.println("What about handball makes you feel" + feelin);
+					break;
 				}
 			}
 		}
-		return "";
 	}
 	/**
 	 * Take a statement with "I want <something>." and transform it into
@@ -203,6 +203,7 @@ public class ChatBot2
 						String restOfStatement = statement.substring(feeling).trim();
 						System.out.println("Why are you feeling " + restOfStatement);
 						ran = false;
+						temp = emotions[i];
 						break;
 					}
 				}
@@ -214,14 +215,16 @@ public class ChatBot2
 						String restOfStatement = statement.substring(feeling).trim();
 						System.out.println("Why were you feeling " + restOfStatement);
 						ran = false;
+						temp = emotions[i];
 						break;
 					}
 				}
-				if(ran == true )
+				if(ran == true)
 				{
 					int feeling = findKeyword(statement, emotions[i], 0);
 					String restOfStatement = statement.substring(feeling).trim();
 					System.out.println("Why are you feeling " + restOfStatement + " today?");
+					temp = emotions[i];
 				}
 			}
 		}

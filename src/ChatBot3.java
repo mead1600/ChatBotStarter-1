@@ -158,7 +158,7 @@ public class ChatBot3
 			return "please answer my question :(";
 		}
 	}
-	private String transformBecauseStatement(String statement)
+	/*private String transformBecauseStatement(String statement)
 	{
 		statement = statement.trim();
 		String lastChar = statement.substring(statement
@@ -172,7 +172,7 @@ public class ChatBot3
 		String restOfStatement = statement.substring(psn + 6).trim();
 		if(statement.substring(8,16).equals("they are"))
 		return "Why";
-	}
+	}*/
 	/**
 	 * Take a statement with "I want to <something>." and transform it into 
 	 * "Why do you want to <something>?"
