@@ -91,6 +91,10 @@ public class ChatBot4
         {
             response = transformDoYouLikeStatement(statement);
         }
+        else if (findKeyword(statement, "Do you think", 0) >= 0)
+        {
+            response = transformDoYouThinkStatement(statement);
+        }
         else
         {
             response = getRandomResponse();
@@ -158,11 +162,17 @@ public class ChatBot4
         return "Why do you like " + restOfStatement + "?";
     }
 
-//    private String transformWhaDoYouThink(String statement){
-//        statement = statement.trim();
-//        String lastChar = statement.substring(statement.length() - 1);
-//        if
-//    }
+    private String transformDoYouThinkStatement(String statement){
+        statement = statement.trim();
+        String lastChar = statement.substring(statement.length() - 1);
+        if (lastChar.equals("?"))
+        {
+            statement = statement.substring(0, statement.length() - 1);
+        }
+        int psn = findKeyword (statement, "Do you think", 0);
+        String restOfStatement = statement.substring(psn + 10).trim();
+        return "Why do you think " + restOfStatement + "?";
+    }
 
 
     /**

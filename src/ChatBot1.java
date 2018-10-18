@@ -40,7 +40,7 @@ public class ChatBot1
 
 	}
 	/**
-	 * Get a default greeting 	
+	 * Gives a response if the user chooses soccer
 	 * @return a greeting
 	 */	
 	public String getGreeting()
@@ -315,54 +315,30 @@ public class ChatBot1
 		return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 	}
 	
-	private String [] randomNeutralResponses = {"Tell me more.",
+	private String [] randomNeutralResponses =
+			{
+			"Tell me more.",
 			"Cool!",
-			"So, would you like to play soccer with me?",
+			"Did you know soccer is the most popular sport in the world?",
             "That's interesting.",
 			"Say it again."
-
-
-
-	};
-	private String [] randomAngryResponses = {"Why did you choose soccer?", "You should switch to another sport", "You sound like you aren't good in soccer.", "You are probably trash in soccer."};
-	private String [] randomHappyResponses = {"How about we play soccer in the park?", "Today is a good day to play!", "Do you want to play soccer today?"};
-	private String [] FinishResponses = {"Ok! See you there!"};
+			};
+	private String [] randomAngryResponses =
+			{
+			"Why did you choose soccer?",
+			"You should switch to another sport",
+			"You sound like you aren't good in soccer.",
+			"You are probably trash in soccer."
+			};
+	private String [] randomHappyResponses =
+			{
+			"How about we play soccer in the park?",
+			"Today is a good day to play!",
+			"Do you want to play soccer today?"
+			};
+}
 	
 
 
-	private String Response(String statement)
-	{
-		String response2 = "";
-		Random r = new Random();
 
-		if (findKeyword(statement, "Yes") >= 0) 
-		{
-			respond++;
-		}
-		if (findKeyword(statement, "ok") >= 0) {
-            respond++;
-		}	
-		else if (findKeyword(statement, "No") >= 0) 
-		{
-            respond--;
-		} else 
-			{
-			response2 = "Yes or No?";
-		}
-		return decide();
-	}
-
-    private String decide()
-    {
-        Random r = new Random();
-        if (respond > 0)
-        {
-            return FinishResponses[r.nextInt(FinishResponses.length)];
-        }
-        else
-        {
-            return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
-        }
-    }
-}	
 
