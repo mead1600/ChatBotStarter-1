@@ -13,8 +13,11 @@ public class ChatBot2
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
-	String[] emotions = {"Pleasant Feelings","OPEN","HAPPY","ALIVE","GOOD","understanding","great","playful","calm","confident","gay","courageous","peaceful","reliable","joyous","energetic","at ease","easy","lucky","liberated","comfortable","amazed","fortunate","optimistic","pleased","free","delighted","provocative","encouraged","sympathetic","overjoyed","impulsive","clever","interested","gleeful","free","surprised","satisfied","thankful","frisky","content","receptive","important","animated","quiet","accepting","festive","spirited","certain","kind","ecstatic","thrilled","relaxed","satisfied","wonderful","serene","glad","free and easy ","cheerful ","bright ","sunny ","blessed ","merry ","reassured ","elated  ","jubilant","LOVE","INTERESTED","POSITIVE","STRONG","loving","concerned","eager","impulsive","considerate","affected","keen","free","affectionate","fascinated","earnest","sure","sensitive","intrigued","intent","certain","tender","absorbed","anxious","rebellious","devoted","inquisitive","inspired","unique","attracted","nosy","determined","dynamic","passionate","snoopy","excited","tenacious","admiration","engrossed","enthusiastic","hardy","warm","curious","bold","secure","touched ","brave ","sympathy ","daring ","close ","challenged ","loved ","optimistic ","comforted","re-enforced ","drawn toward","confident ","hopeful","Difficult/Unpleasant Feelings","ANGRY","DEPRESSED","CONFUSED","HELPLESS","irritated","lousy","upset","incapable","enraged","disappointed","doubtful","alone","hostile","discouraged","uncertain","paralyzed","insulting","ashamed","indecisive","fatigued","sore","powerless","perplexed","useless","annoyed","diminished","embarrassed","inferior","upset","guilty","hesitant","vulnerable","hateful","dissatisfied","shy","empty","unpleasant","miserable","stupefied","forced","offensive","detestable","disillusioned","hesitant","bitter","repugnant","unbelieving","despair","aggressive","despicable","skeptical","frustrated","resentful","disgusting","distrustful","distressed","inflamed","abominable","misgiving","woeful","provoked","terrible","lost","pathetic","incensed","in despair","unsure","tragic","infuriated","sulky","uneasy","in a stew","cross","bad","pessimistic","dominated","worked up","a sense of loss","tense","boiling","fuming","indignant","INDIFFERENT","AFRAID","HURT","SAD","insensitive","fearful","crushed","tearful","dull","terrified","tormented","sorrowful","nonchalant","suspicious","deprived","pained","neutral","anxious","pained","grief","reserved","alarmed","tortured","anguish","weary","panic","dejected","desolate","bored","nervous","rejected","desperate","preoccupied","scared","injured","pessimistic","cold","worried","offended","unhappy","disinterested","frightened","afflicted","lonely","lifeless","timid","aching","grieved","shaky","victimized","mournful","restless","heartbroken","dismayed","doubtful","agonized ","threatened","appalled ","cowardly","humiliated ","quaking","wronged ","menaced","alienated ","wary"};
-	String[] time = {"yesterday,now,tomorrow,next week,later,recently,eventually"};
+	String[] emotions = {"Pleasant Feelings","mad","OPEN","HAPPY","ALIVE","GOOD","understanding","great","playful","calm","confident","gay","courageous","peaceful","reliable","joyous","energetic","at ease","easy","lucky","liberated","comfortable","amazed","fortunate","optimistic","pleased","free","delighted","provocative","encouraged","sympathetic","overjoyed","impulsive","clever","interested","gleeful","free","surprised","satisfied","thankful","frisky","content","receptive","important","animated","quiet","accepting","festive","spirited","certain","kind","ecstatic","thrilled","relaxed","satisfied","wonderful","serene","glad","free and easy ","cheerful ","bright ","sunny ","blessed ","merry ","reassured ","elated  ","jubilant","LOVE","INTERESTED","POSITIVE","STRONG","loving","concerned","eager","impulsive","considerate","affected","keen","free","affectionate","fascinated","earnest","sure","sensitive","intrigued","intent","certain","tender","absorbed","anxious","rebellious","devoted","inquisitive","inspired","unique","attracted","nosy","determined","dynamic","passionate","snoopy","excited","tenacious","admiration","engrossed","enthusiastic","hardy","warm","curious","bold","secure","touched ","brave ","sympathy ","daring ","close ","challenged ","loved ","optimistic ","comforted","re-enforced ","drawn toward","confident ","hopeful","Difficult/Unpleasant Feelings","ANGRY","DEPRESSED","CONFUSED","HELPLESS","irritated","lousy","upset","incapable","enraged","disappointed","doubtful","alone","hostile","discouraged","uncertain","paralyzed","insulting","ashamed","indecisive","fatigued","sore","powerless","perplexed","useless","annoyed","diminished","embarrassed","inferior","upset","guilty","hesitant","vulnerable","hateful","dissatisfied","shy","empty","unpleasant","miserable","stupefied","forced","offensive","detestable","disillusioned","hesitant","bitter","repugnant","unbelieving","despair","aggressive","despicable","skeptical","frustrated","resentful","disgusting","distrustful","distressed","inflamed","abominable","misgiving","woeful","provoked","terrible","lost","pathetic","incensed","in despair","unsure","tragic","infuriated","sulky","uneasy","in a stew","cross","bad","pessimistic","dominated","worked up","a sense of loss","tense","boiling","fuming","indignant","INDIFFERENT","AFRAID","HURT","SAD","insensitive","fearful","crushed","tearful","dull","terrified","tormented","sorrowful","nonchalant","suspicious","deprived","pained","neutral","anxious","pained","grief","reserved","alarmed","tortured","anguish","weary","panic","dejected","desolate","bored","nervous","rejected","desperate","preoccupied","scared","injured","pessimistic","cold","worried","offended","unhappy","disinterested","frightened","afflicted","lonely","lifeless","timid","aching","grieved","shaky","victimized","mournful","restless","heartbroken","dismayed","doubtful","agonized ","threatened","appalled ","cowardly","humiliated ","quaking","wronged ","menaced","alienated ","wary"};
+	String[] timePastTense = {"yesterday","last week","past week"};
+	String[] time= {"now","right now"};
+	String[] yes = {"ye","yah","yep","yeh","yuh"};
+	String[] no = {"nah","nope","nop","naw","nu"};
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -94,6 +97,7 @@ public class ChatBot2
 		}
 
 		else if (Arrays.stream(emotions).filter(v -> statement.toLowerCase().indexOf(v.toLowerCase()) > -1).count() > 0) {
+			System.out.println();
 			transformEmotion(statement);
 		}
 		else
@@ -125,21 +129,6 @@ public class ChatBot2
 		return "Why do you want to " + restOfStatement + "?";
 	}
 
-	private String transfor(String statement)
-	{
-		//  Remove the final period, if there is one
-		statement = statement.trim();
-		String lastChar = statement.substring(statement
-				.length() - 1);
-		if (lastChar.equals("."))
-		{
-			statement = statement.substring(0, statement
-					.length() - 1);
-		}
-		int psn = findKeyword (statement, "I want to", 0);
-		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you want to " + restOfStatement + "?";
-	}
 
 
 	/**
@@ -161,10 +150,12 @@ public class ChatBot2
 		}
 		int psn = findKeyword (statement, "I want", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
+		System.out.println(restOfStatement);
 		return "Would you really be happy if you had " + restOfStatement + "?";
 	}
 	private String transformEmotion(String statement)
 	{
+		boolean ran = true;
 		statement = statement.trim();
 		String lastChar = statement.substring(statement
 				.length() - 1);
@@ -173,17 +164,41 @@ public class ChatBot2
 			statement = statement.substring(0, statement
 					.length() - 1);
 		}
-
-//detect emotions
-		for(int i = 0;i<emotions.length;i++)
+		for(int i = 0;i<emotions.length - 1;i++)
 		{
-			int feeling = findKeyword(statement, emotions[i], 0);
-			String restOfStatement = statement.substring(statement.indexOf(emotions[i]),statement.indexOf(emotions[i])+ emotions[i].length()).trim();
-			System.out.println(restOfStatement);
-			System.out.println("Why are you feeling " + restOfStatement + " today?");
-			break;
+			if(statement.contains(emotions[i].toLowerCase()))
+			{
+				for (int x = 0; x < time.length - 1; x++)
+				{
+					if (statement.contains(time[x]))
+					{
+						int feeling = findKeyword(statement, emotions[i], 0);
+						String restOfStatement = statement.substring(feeling).trim();
+						System.out.println("Why are you feeling " + restOfStatement);
+						ran = false;
+						break;
+					}
+				}
+				for (int t = 0; t < timePastTense.length - 1; t++)
+				{
+					if (statement.contains(timePastTense[t]))
+					{
+						int feeling = findKeyword(statement, emotions[i], 0);
+						String restOfStatement = statement.substring(feeling).trim();
+						System.out.println("Why were you feeling " + restOfStatement);
+						ran = false;
+						break;
+					}
+				}
+				if(ran == true )
+				{
+					int feeling = findKeyword(statement, emotions[i], 0);
+					String restOfStatement = statement.substring(feeling).trim();
+					System.out.println("Why are you feeling " + restOfStatement + " today?");
+				}
+			}
 		}
-			return "";
+		return "Is it because of handball?";
 	}
 
 
