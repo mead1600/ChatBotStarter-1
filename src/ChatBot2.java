@@ -23,6 +23,7 @@ public class ChatBot2
 	String[] sorry = {"sorry","srry","sry","mb","my bad","im sorry"};
 	String temp;
 	String temp2;
+	boolean temp3;
 	String emotionTemp;
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -60,7 +61,7 @@ public class ChatBot2
 	 */
 	public String getGreeting()
 	{
-		System.out.println("Hello, I'm the handball bot.");
+		System.out.println("Hello, I'm the handball bot.(BTW I'm moody)");
 		return "How are you feeling?";
 	}
 	public String help()
@@ -104,6 +105,7 @@ public class ChatBot2
 			{
 				for (int i = 0; i < emotionsHappy.length; i++) {
 					if (temp.equals(emotionsHappy[i])) {
+						temp3 = true;
 						Random r = new Random();
 						return randomHappyResponses[r.nextInt(randomHappyResponses.length)] + temp;
 					}
@@ -156,6 +158,7 @@ public class ChatBot2
 						{
 							String[] randomForgivenResponses = {"Whew, I knew it wouldn't be handball's fault. I can't help that you're " + emotionTemp + ',' + " maybe another bot could help?(type \'switch\')", "Sorry that you're " + emotionTemp + ',' + " but I can't help you. maybe another bot could help?(type \'switch\')", "It's okay, why don't you like handball though?"};
 							Random r = new Random();
+							temp3=true;
 							return randomForgivenResponses[r.nextInt(randomForgivenResponses.length)];
 						}
 					}
@@ -167,6 +170,25 @@ public class ChatBot2
 						System.out.println("I didn't want to talk to you anyways even if you said sorry");
 						System.exit(1);
 					}
+				}
+			}
+		}
+		else if (temp3== true)
+		{
+			for(int i = 0;i<emotionsHappy.length;i++)
+			{
+				if(statement.contains(emotionsHappy[i]))
+				{
+					temp = emotionsHappy[i];
+					System.out.println("I find handball " + temp + " too");
+				}
+			}
+			for(int x = 0;x<emotionsSad.length;x++)
+			{
+				if(statement.contains(emotionsSad[x]))
+				{
+					temp = emotionsSad[x];
+					System.out.println("I don't think handball is " + temp);
 				}
 			}
 		}
@@ -197,6 +219,20 @@ public class ChatBot2
 		int psn = findKeyword (statement, "I want to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
 		return "Why do you want to " + restOfStatement + "?";
+	}
+	private String transformContinueConvo(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "because", 0);
+		String restOfStatement = statement.substring(psn + 9).trim();
+		return " " + restOfStatement + "?";
 	}
 
 	/**
