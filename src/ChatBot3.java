@@ -1,6 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
-
+//This chatbot was created by Mead Gyawu
 /**
  * A program to carry on conversations with a human user.
  * This version:
@@ -21,6 +21,7 @@ public class ChatBot3
 	public void chatLoop(String statement)
 	{
 		Scanner in = new Scanner (System.in);
+		System.out.println(help());
 		System.out.println (getGreeting());
 
 
@@ -48,6 +49,15 @@ public class ChatBot3
 	public String getGreeting()
 	{
 		return "Do you like football?";
+	}
+
+	/**
+	 * Returns the instructions for switching to another bot
+	 * @return
+	 */
+	public String help()
+	{
+		return "\n\033[imtype: \"switch\" to switch to other chatbots \ntype: \"quit\" to stop chatting \nEnjoy!\n\033[0m";
 	}
 
 	/**
@@ -131,20 +141,7 @@ public class ChatBot3
 		{
 			response = transformIWantToStatement(statement);
 		}
-		else if (findKeyword(statement, "you", 0) >= 0)
-		{
-			response = transformIYouStatement(statement);
-		}
-		else if (findKeyword(statement, "I",0) >= 0)
-		{
-			if (findKeyword(statement, "you") >= 0)
-			{
-				response = 	transformIYouStatement(statement);
-			}
-			else {
-				response = transformIWantStatement(statement);
-			}
-		}
+
 		else if (findKeyword(statement,"because i am") >= 0)
 		{
 			response = transformBecauseIAm(statement);
@@ -153,10 +150,7 @@ public class ChatBot3
 		{
 			response = transformBecauseIt(statement);
 		}
-		else if (findKeyword(statement, "because i") >= 0)
-		{
-			response = transformBecauseI(statement);
-		}
+
 		else if (findKeyword(statement,"because you are") >= 0)
 		{
 			response = transformBecauseYouAre(statement);
@@ -164,6 +158,10 @@ public class ChatBot3
 		else if (findKeyword(statement,"because you") >= 0)
 		{
 			response = transformBecauseYou(statement);
+		}
+		else if (findKeyword(statement, "because i") >= 0)
+		{
+			response = transformBecauseI(statement);
 		}
 		else if (findKeyword(statement,"because") >= 0)
 		{
@@ -181,6 +179,20 @@ public class ChatBot3
 		{
 			response = "why?";
 		}
+		else if (findKeyword(statement, "you", 0) >= 0)
+		{
+			response = transformIYouStatement(statement);
+		}
+		else if (findKeyword(statement, "I",0) >= 0)
+		{
+			if (findKeyword(statement, "you") >= 0)
+			{
+				response = 	transformIYouStatement(statement);
+			}
+			else {
+				response = transformIWantStatement(statement);
+			}
+		}
 		else
 		{
 			response = getRandomResponse();
@@ -189,6 +201,11 @@ public class ChatBot3
 		return response;
 	}
 
+	/**
+	 * Finds 'because it' in the user's input and creates a response
+	 * @param statement
+	 * @return
+	 */
 	private String transformBecauseIt(String statement)
 	{
 		statement = statement.trim();
@@ -203,7 +220,11 @@ public class ChatBot3
 		String restOfStatement = statement.substring(psn + 10).trim();
 		return "Why is it " + restOfStatement + "?";
 	}
-
+	/**
+	 * Finds 'because i' in the user's input and creates a response
+	 * @param statement
+	 * @return
+	 */
 	private String transformBecauseI(String statement)
 	{
 		//  Remove the final period, if there is one
@@ -219,7 +240,11 @@ public class ChatBot3
 		String restOfStatement = statement.substring(psn + 9).trim();
 		return "Why do you " + restOfStatement + "?";
 	}
-
+	/**
+	 * Finds 'because i am' in the user's input and creates a response
+	 * @param statement
+	 * @return
+	 */
 	private String transformBecauseIAm(String statement)
 	{
 		//  Remove the final period, if there is one
@@ -235,7 +260,11 @@ public class ChatBot3
 		String restOfStatement = statement.substring(psn + 12).trim();
 		return "Why are you " + restOfStatement + "?";
 	}
-
+	/**
+	 * Finds 'because you' in the user's input and creates a response
+	 * @param statement
+	 * @return
+	 */
 	private String transformBecauseYou(String statement)
 	{
 		//  Remove the final period, if there is one
@@ -251,6 +280,11 @@ public class ChatBot3
 		String restOfStatement = statement.substring(psn + 11).trim();
 		return "Why do I " + restOfStatement + "?";
 	}
+	/**
+	 * Finds 'because you are' in the user's input and creates a response
+	 * @param statement
+	 * @return
+	 */
 	private String transformBecauseYouAre(String statement)
 	{
 		//  Remove the final period, if there is one
@@ -267,6 +301,11 @@ public class ChatBot3
 		return "Why do I " + restOfStatement + "?";
 	}
 
+	/**
+	 * Finds the phrase "cuz you" in the user's input and creates a response
+	 * @param statement
+	 * @return
+	 */
 	private String transformCuzYou(String statement)
 	{
 		//  Remove the final period, if there is one
@@ -282,7 +321,11 @@ public class ChatBot3
 		String restOfStatement = statement.substring(psn + 7).trim();
 		return "Why do I " + restOfStatement + "?";
 	}
-
+	/**
+	 * Finds the phrase "cuz you are" in the user's input and creates a response
+	 * @param statement
+	 * @return
+	 */
 	private String transformCuzYouAre(String statement)
 	{
 		//  Remove the final period, if there is one
