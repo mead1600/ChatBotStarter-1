@@ -11,7 +11,6 @@ public class ChatBot1
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
-	int respond = 0;
 
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
@@ -20,24 +19,33 @@ public class ChatBot1
 	public void chatLoop(String statement)
 	{
 		Scanner in = new Scanner (System.in);
+		System.out.println (help());
 		System.out.println (getGreeting());
-
 
 		while (!statement.equals("Bye"))
 		{
 
-
 			statement = in.nextLine();
-			//getResponse handles the user reply
 			if(statement.toLowerCase().equals("switch"))
 			{
-				System.out.println("Which chatbot would you like to switch to? Handball, Football, or Basketball?");
+				System.out.println("Which chatbot would you like to switch to? Soccer, Football, or Basketball?");
 				break;
+			}
+			//getResponse handles the user reply
+			if(statement.toLowerCase().equals("quit"))
+			{
+				System.out.println("Have a nice day");
+				System.exit(1);
 			}
 			System.out.println(getResponse(statement));
 
 		}
 
+	}
+
+	public String help()
+	{
+		return"\n\033[1mtype: \"switch\" to switch to other chatbots \ntype: \"quit\" to stop chatting \nEnjoy!\n\033[0m";
 	}
 	/**
 	 * Gives a response if the user chooses soccer
@@ -108,7 +116,7 @@ public class ChatBot1
 		{
 			response = transformIWantToStatement(statement);
 		}
-		else if (findKeyword(statement, "you", 0) >= 0)
+		else if (findKeyword(statement, "you said", 0) >= 0)
 		{
 			response = transformYouStatement(statement);
 		}
