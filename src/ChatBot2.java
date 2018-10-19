@@ -14,13 +14,16 @@ public class ChatBot2
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 	int emotion = 0;
 	String[] emotions = {"Pleasant Feelings","mad","OPEN","fine","HAPPY","ALIVE","GOOD","understanding","great","playful","calm","confident","gay","courageous","peaceful","reliable","joyous","energetic","at ease","easy","lucky","liberated","comfortable","amazed","fortunate","optimistic","pleased","free","delighted","provocative","encouraged","sympathetic","overjoyed","impulsive","clever","interested","gleeful","free","surprised","satisfied","thankful","frisky","content","receptive","important","animated","quiet","accepting","festive","spirited","certain","kind","ecstatic","thrilled","relaxed","satisfied","wonderful","serene","glad","free and easy ","cheerful ","bright ","sunny ","blessed ","merry ","reassured ","elated  ","jubilant","LOVE","INTERESTED","POSITIVE","STRONG","loving","concerned","eager","impulsive","considerate","affected","keen","free","affectionate","fascinated","earnest","sure","sensitive","intrigued","intent","certain","tender","absorbed","anxious","rebellious","devoted","inquisitive","inspired","unique","attracted","nosy","determined","dynamic","passionate","snoopy","excited","tenacious","admiration","engrossed","enthusiastic","hardy","warm","curious","bold","secure","touched ","brave ","sympathy ","daring ","close ","challenged ","loved ","optimistic ","comforted","re-enforced ","drawn toward","confident ","hopeful","Difficult/Unpleasant Feelings","ANGRY","DEPRESSED","CONFUSED","HELPLESS","irritated","lousy","upset","incapable","enraged","disappointed","doubtful","alone","hostile","discouraged","uncertain","paralyzed","insulting","ashamed","indecisive","fatigued","sore","powerless","perplexed","useless","annoyed","diminished","embarrassed","inferior","upset","guilty","hesitant","vulnerable","hateful","dissatisfied","shy","empty","unpleasant","miserable","stupefied","forced","offensive","detestable","disillusioned","hesitant","bitter","repugnant","unbelieving","despair","aggressive","despicable","skeptical","frustrated","resentful","disgusting","distrustful","distressed","inflamed","abominable","misgiving","woeful","provoked","terrible","lost","pathetic","incensed","in despair","unsure","tragic","infuriated","sulky","uneasy","in a stew","cross","bad","pessimistic","dominated","worked up","a sense of loss","tense","boiling","fuming","indignant","INDIFFERENT","AFRAID","HURT","SAD","insensitive","fearful","crushed","tearful","dull","terrified","tormented","sorrowful","nonchalant","suspicious","deprived","pained","neutral","anxious","pained","grief","reserved","alarmed","tortured","anguish","weary","panic","dejected","desolate","bored","nervous","rejected","desperate","preoccupied","scared","injured","pessimistic","cold","worried","offended","unhappy","disinterested","frightened","afflicted","lonely","lifeless","timid","aching","grieved","shaky","victimized","mournful","restless","heartbroken","dismayed","doubtful","agonized ","threatened","appalled ","cowardly","humiliated ","quaking","wronged ","menaced","alienated ","wary"};
-	String[] emotionsHappy = {"bland","blissful","blithe","calm","capricious","captivated","cheerful","cheery","chipper","chirpy","confident","content","convivial","dazed","delighted","delightful","ecstatic","elated","enchanted","epicurean","euphoric","excited","exstatic","exuberant","exultant ","fain","fanciful","felicitous","flying high","formidable","glad","gleeful","glorious","gratified ","happy","hilarious","hopeful","humorous ","in high spirits","intoxicated","jolly","joyful","joyous","jubilant","laughing","light","lively","lunatic","lucky","merry","mirthful","on cloud nine","optimistic","overwhelmed","peaceful","peppyperky","playful","pleased","providential","positive","sanguine","satisfied","sensuous","solemn","sparkling","splendid","sprightly","spruce","stoked","sunny","sybaritic","thrilled","upbeat","voluptuous","walking on air","zestful"};
-	String[] emotionsSad = {"abandoned","abused","accused","addicted","afraid","aggravated","aggressive","alone","angry","anguish","annoyed","anxious","apprehensive","argumentative","artificial","ashamed","assaulted","at a loss","at risk","atrocious","attacked","avoided","awful","awkward","bad","badgered","baffled","banned","barren","beat","beaten down","belittled","berated","betrayed","bitched at","bitter","bizzare","blacklisted","blackmailed","blamed","bleak","blown away","blur","bored","boring","bossed-around","bothered","bothersome","bounded","boxed-in","broken","bruised","brushed-off","bugged","bullied","bummed","bummed out","burdened","burdensome","burned","burned-out","caged in","careless","chaotic","chased","cheated","cheated on","chicken","claustrophobic","clingy","closed","clueless","clumsy","coaxed","codependent","coerced","cold","cold-hearted","combative","commanded","compared","competitive","compulsive","conceited","concerned","condescended to","confined","conflicted","confronted","confused","conned","consumed","contemplative","contempt","contentious","controlled","convicted","cornered","corralled","cowardly","crabby","cramped","cranky","crap","crappy","crazy","creeped out","creepy","critical","criticized","cross","crowded","cruddy","crummy","crushed","cut-down","cut-off","cynical","damaged","damned","dangerous","dark","dazed","dead","deceived","deep","defamed","defeated","defective","defenseless","defensive","defiant","deficient","deflated","degraded","dehumanized","dejected","delicate","deluded","demanding","demeaned","demented","demoralized","demotivated","dependent","depleted","depraved","depressed","deprived","deserted","deserving of pain/punishment","desolate","despair","despairing","desperate","despicable","despised","destroyed","destructive","detached","detest","detestable","detested","devalued","devastated","deviant","devoid","diagnosed","dictated to","different","difficult","directionless","dirty","disabled","disagreeable","disappointed","disappointing","disapproved of","disbelieved","discardable","discarded","disconnected","discontent","discouraged","discriminated","disdain","disdainful","disempowered","disenchanted","disgraced","disgruntled","disgust","disgusted","disheartened","dishonest","dishonorable","disillusioned","dislike","disliked","dismal","dismayed","disorganized","disoriented","disowned","displeased","disposable","disregarded","disrespected","dissatisfied","distant","distracted","distraught","distressed","disturbed","dizzy","dominated","doomed","double-crossed","doubted","doubtful","down","down and out","down in the dumps","downhearted","downtrodden","drained","dramatic","dread","dreadful","dreary","dropped","drunk","dry","dumb","dumped","dumped on","duped","edgy","egocentric","egotistic","egotistical","elusive","emancipated","emasculated","embarrassed","emotional","emotionless","emotionally bankrupt","empty","encumbered","endangered","enraged","enslaved","entangled","evaded","evasive","evicted","excessive","excluded","exhausted","exploited","exposed","failful","fake","false","fear","fearful","fed up","flawed","forced","forgetful","forgettable","forgotten","fragile","freaked out","frightened","frigid","frustrated","furious","gloomy","glum","gothic","grey","grief","grim","gross","grossed-out","grotesque","grouchy","grounded","grumpy","guilt-tripped","guilty","harassed","hard","hard-hearted","harmed","hassled","hate","hateful","hatred","haunted","heartbroken","heartless","heavy-hearted","helpless","hesitant","hideous","hindered","hopeless","horrible","horrified","horror","hostile","hot-tempered","humiliated","hung up","hung over","hurried","hurt","hysterical","idiotic","ignorant","ignored","ill","ill-tempered","imbalanced","imposed-upon","impotent","imprisoned","impulsive","in the dumps","in the way","inactive","inadequate","incapable","incommunicative","incompetent","incompatible","incomplete","incorrect","indecisive","indifferent","indoctrinated","inebriated","ineffective","inefficient","inferior","infuriated","inhibited","inhumane","injured","injusticed","insane","insecure","insignificant","insincere","insufficient","insulted","intense","interrogated","interrupted","intimidated","intoxicated","invalidated","invisible","irrational","irritable","irritated","isolated","jaded","jealous","jerked around","joyless","judged","kept apart","kept away","kept in","kept out","kept quiet","labeled","laughable","laughed at","lazy","leaned on","lectured to","left out","let down","lied about","lied to","limited","little","lonely","lonesome","longing","lost","lousy","loveless","low","mad","made fun of","man handled","manipulated","masochistic","messed with","messed up","messy","miffed","miserable","misled","mistaken","mistreated","mistrusted","misunderstood","mixed-up","mocked","molested","moody","nagged","needy","negative","nervous","neurotic","nonconforming","numb","nuts","nutty","objectified","obligated","obsessed","obsessive","obstructed","odd","offended","on display","opposed","oppressed","out of place","out of touch","over-controlled","over-protected","overwhelmed","pain","panic","paranoid","passive","pathetic","pessimistic","petrified","phony","picked on","pissed","pissed off","plain","played with","pooped","poor","powerless","pre-judged","preached to","preoccupied","predjudiced","pressured","prosecuted","provoked","psychopathic","psychotic","pulled apart","pulled back","punished","pushed","pushed away","put down","puzzled","quarrelsome","queer","questioned","quiet","rage","raped","rattled","regret","rejected","resented","resentful","responsible","retarded","revengeful","ridiculed","ridiculous","robbed","rotten","sad","sadistic","sarcastic","scared","scarred","screwed","screwed over","screwed up","self-centered","self-conscious","self-destructive","self-hatred","selfish","sensitive","shouted at","shy","singled-out","slow","small","smothered","snapped at","spiteful","stereotyped","strange","stressed","stretched","stuck","stupid","submissive","suffering","suffocated","suicidal","superficial","suppressed","suspicious"};
+	String[] emotionsHappy = {"fine","great","bland","blissful","blithe","calm","capricious","captivated","cheerful","cheery","chipper","chirpy","confident","content","convivial","dazed","delighted","delightful","ecstatic","elated","enchanted","epicurean","euphoric","excited","exstatic","exuberant","exultant ","fain","fanciful","felicitous","flying high","formidable","glad","gleeful","glorious","gratified ","happy","hilarious","hopeful","humorous ","in high spirits","intoxicated","jolly","joyful","joyous","jubilant","laughing","light","lively","lunatic","lucky","merry","mirthful","on cloud nine","optimistic","overwhelmed","peaceful","peppyperky","playful","pleased","providential","positive","sanguine","satisfied","sensuous","solemn","sparkling","splendid","sprightly","spruce","stoked","sunny","sybaritic","thrilled","upbeat","voluptuous","walking on air","zestful","good",};
+	String[] emotionsSad = {"not feeling well","abandoned","abused","accused","addicted","afraid","aggravated","aggressive","alone","angry","anguish","annoyed","anxious","apprehensive","argumentative","artificial","ashamed","assaulted","at a loss","at risk","atrocious","attacked","avoided","awful","awkward","bad","badgered","baffled","banned","barren","beat","beaten down","belittled","berated","betrayed","bitched at","bitter","bizzare","blacklisted","blackmailed","blamed","bleak","blown away","blur","bored","boring","bossed-around","bothered","bothersome","bounded","boxed-in","broken","bruised","brushed-off","bugged","bullied","bummed","bummed out","burdened","burdensome","burned","burned-out","caged in","careless","chaotic","chased","cheated","cheated on","chicken","claustrophobic","clingy","closed","clueless","clumsy","coaxed","codependent","coerced","cold","cold-hearted","combative","commanded","compared","competitive","compulsive","conceited","concerned","condescended to","confined","conflicted","confronted","confused","conned","consumed","contemplative","contempt","contentious","controlled","convicted","cornered","corralled","cowardly","crabby","cramped","cranky","crap","crappy","crazy","creeped out","creepy","critical","criticized","cross","crowded","cruddy","crummy","crushed","cut-down","cut-off","cynical","damaged","damned","dangerous","dark","dazed","dead","deceived","deep","defamed","defeated","defective","defenseless","defensive","defiant","deficient","deflated","degraded","dehumanized","dejected","delicate","deluded","demanding","demeaned","demented","demoralized","demotivated","dependent","depleted","depraved","depressed","deprived","deserted","deserving of pain/punishment","desolate","despair","despairing","desperate","despicable","despised","destroyed","destructive","detached","detest","detestable","detested","devalued","devastated","deviant","devoid","diagnosed","dictated to","different","difficult","directionless","dirty","disabled","disagreeable","disappointed","disappointing","disapproved of","disbelieved","discardable","discarded","disconnected","discontent","discouraged","discriminated","disdain","disdainful","disempowered","disenchanted","disgraced","disgruntled","disgust","disgusted","disheartened","dishonest","dishonorable","disillusioned","dislike","disliked","dismal","dismayed","disorganized","disoriented","disowned","displeased","disposable","disregarded","disrespected","dissatisfied","distant","distracted","distraught","distressed","disturbed","dizzy","dominated","doomed","double-crossed","doubted","doubtful","down","down and out","down in the dumps","downhearted","downtrodden","drained","dramatic","dread","dreadful","dreary","dropped","drunk","dry","dumb","dumped","dumped on","duped","edgy","egocentric","egotistic","egotistical","elusive","emancipated","emasculated","embarrassed","emotional","emotionless","emotionally bankrupt","empty","encumbered","endangered","enraged","enslaved","entangled","evaded","evasive","evicted","excessive","excluded","exhausted","exploited","exposed","failful","fake","false","fear","fearful","fed up","flawed","forced","forgetful","forgettable","forgotten","fragile","freaked out","frightened","frigid","frustrated","furious","gloomy","glum","gothic","grey","grief","grim","gross","grossed-out","grotesque","grouchy","grounded","grumpy","guilt-tripped","guilty","harassed","hard","hard-hearted","harmed","hassled","hate","hateful","hatred","haunted","heartbroken","heartless","heavy-hearted","helpless","hesitant","hideous","hindered","hopeless","horrible","horrified","horror","hostile","hot-tempered","humiliated","hung up","hung over","hurried","hurt","hysterical","idiotic","ignorant","ignored","ill","ill-tempered","imbalanced","imposed-upon","impotent","imprisoned","impulsive","in the dumps","in the way","inactive","inadequate","incapable","incommunicative","incompetent","incompatible","incomplete","incorrect","indecisive","indifferent","indoctrinated","inebriated","ineffective","inefficient","inferior","infuriated","inhibited","inhumane","injured","injusticed","insane","insecure","insignificant","insincere","insufficient","insulted","intense","interrogated","interrupted","intimidated","intoxicated","invalidated","invisible","irrational","irritable","irritated","isolated","jaded","jealous","jerked around","joyless","judged","kept apart","kept away","kept in","kept out","kept quiet","labeled","laughable","laughed at","lazy","leaned on","lectured to","left out","let down","lied about","lied to","limited","little","lonely","lonesome","longing","lost","lousy","loveless","low","mad","made fun of","man handled","manipulated","masochistic","messed with","messed up","messy","miffed","miserable","misled","mistaken","mistreated","mistrusted","misunderstood","mixed-up","mocked","molested","moody","nagged","needy","negative","nervous","neurotic","nonconforming","numb","nuts","nutty","objectified","obligated","obsessed","obsessive","obstructed","odd","offended","on display","opposed","oppressed","out of place","out of touch","over-controlled","over-protected","overwhelmed","pain","panic","paranoid","passive","pathetic","pessimistic","petrified","phony","picked on","pissed","pissed off","plain","played with","pooped","poor","powerless","pre-judged","preached to","preoccupied","predjudiced","pressured","prosecuted","provoked","psychopathic","psychotic","pulled apart","pulled back","punished","pushed","pushed away","put down","puzzled","quarrelsome","queer","questioned","quiet","rage","raped","rattled","regret","rejected","resented","resentful","responsible","retarded","revengeful","ridiculed","ridiculous","robbed","rotten","sad","sadistic","sarcastic","scared","scarred","screwed","screwed over","screwed up","self-centered","self-conscious","self-destructive","self-hatred","selfish","sensitive","shouted at","shy","singled-out","slow","small","smothered","snapped at","spiteful","stereotyped","strange","stressed","stretched","stuck","stupid","submissive","suffering","suffocated","suicidal","superficial","suppressed","suspicious"};
 	String[] timePastTense = {"yesterday","last week","past week"};
 	String[] time= {"now","right now"};
 	String[] yes = {"ye","yah","yep","yeh","yuh","yes","YES"};
 	String[] no = {"nah","nope","nop","naw","nu","no"};
+	String[] sorry = {"sorry","srry","sry","mb","my bad","im sorry"};
 	String temp;
+	String temp2;
+	String emotionTemp;
 	/**
 	 * Runs the conversation for this particular chatbot, should allow switching to other chatbots.
 	 * @param statement the statement typed by the user
@@ -91,22 +94,29 @@ public class ChatBot2
 			response = transformIWantStatement(statement);
 		}
 
-		else if (Arrays.stream(emotionsHappy).filter(v -> statement.toLowerCase().indexOf(v.toLowerCase()) > -1).count() > 0 || Arrays.stream(emotionsSad).filter(v -> statement.toLowerCase().indexOf(v.toLowerCase()) > -1).count() > 0) {
+		else if (Arrays.stream(emotionsHappy).filter(v -> statement.toLowerCase().indexOf(v.toLowerCase()) > -1).count() > 0 || Arrays.stream(emotionsSad).filter(v -> statement.toLowerCase().indexOf(v.toLowerCase()) > -1).count() > 0)
+		{
 			System.out.println(transformEmotion(statement));
 		}
 		else if(temp!=null)
 		{
-			if (Arrays.stream(yes).filter(v -> statement.toLowerCase().indexOf(v.toLowerCase()) > -1).count() > 0) {
+			if (Arrays.stream(yes).filter(v -> statement.toLowerCase().indexOf(v.toLowerCase()) > -1).count() > 0)
+			{
 				for (int i = 0; i < emotionsHappy.length; i++) {
 					if (temp.equals(emotionsHappy[i])) {
 						Random r = new Random();
-						System.out.println(randomHappyResponses[r.nextInt(randomHappyResponses.length)] + temp);
+						return randomHappyResponses[r.nextInt(randomHappyResponses.length)] + temp;
 					}
 				}
-				for (int i = 0; i < emotionsSad.length; i++) {
-					if (temp.equals(emotionsSad[i])) {
+				for (int i = 0; i < emotionsSad.length; i++)
+				{
+					if (temp.equals(emotionsSad[i]))
+					{
+						temp2 = "no";
+						emotionTemp = temp;
+						temp = null;
 						Random r = new Random();
-						System.out.println(randomAngryResponses[r.nextInt(randomAngryResponses.length)]);
+						return randomAngryResponses[r.nextInt(randomAngryResponses.length)];
 					}
 				}
 			}
@@ -116,20 +126,48 @@ public class ChatBot2
 				{
 					if (temp.equals(emotionsSad[i]))
 					{
-						String[] randomReliefResponses = {"Whew, I knew it wouldn't be handball's fault. I can't help that you're " + temp + ',' + " maybe another bot could help?(type \'switch\')", "Sorry that you're " + temp + ',' + " but I can't help you"};
+						String[] randomReliefResponses = {"Whew, I knew it wouldn't be handball's fault. I can't help that you're " + temp + ',' + " maybe another bot could help?(type \'switch\')", "Sorry that you're " + temp + ',' + " but I can't help you. maybe another bot could help?(type \'switch\')"};
 						Random r = new Random();
-						System.out.println(randomReliefResponses[r.nextInt(randomReliefResponses.length)]);
+						return randomReliefResponses[r.nextInt(randomReliefResponses.length)];
 					}
 				}
 				for (int i = 0; i < emotionsHappy.length; i++)
 				{
 					if (temp.equals(emotionsHappy[i]))
 					{
+						temp2 = "no";
+						emotionTemp = temp;
+						temp = null;
 						Random r = new Random();
 						return randomAngryResponses[r.nextInt(randomAngryResponses.length)];
+
 					}
 				}
-
+			}
+		}
+		else if (temp2.equals("no"))
+		{
+			for (int i = 0; i < sorry.length; i++) {
+				if (statement.contains(sorry[i]))
+				{
+					for (int o = 0; o < emotionsSad.length; o++)
+					{
+						if (emotionsSad[o].contains(emotionTemp))
+						{
+							String[] randomForgivenResponses = {"Whew, I knew it wouldn't be handball's fault. I can't help that you're " + emotionTemp + ',' + " maybe another bot could help?(type \'switch\')", "Sorry that you're " + emotionTemp + ',' + " but I can't help you. maybe another bot could help?(type \'switch\')", "It's okay, why don't you like handball though?"};
+							Random r = new Random();
+							return randomForgivenResponses[r.nextInt(randomForgivenResponses.length)];
+						}
+					}
+				}
+				for (int x = 0; x < sorry.length; x++)
+				{
+					if (!statement.contains(sorry[x]))
+					{
+						System.out.println("I didn't want to talk to you anyways even if you said sorry");
+						System.exit(1);
+					}
+				}
 			}
 		}
 		else
@@ -161,34 +199,6 @@ public class ChatBot2
 		return "Why do you want to " + restOfStatement + "?";
 	}
 
-
-
-	/**
-	 * Take a statement with "I want <something>." and transform it into
-	 * "Would you really be happy if you had <something>?"
-	 * @param statement the user statement, assumed to contain "I want"
-	 * @return the transformed statement
-	 */
-	private String whenEmotionSad(String statement)
-	{
-		if(Arrays.stream(emotionsSad).filter(v -> statement.toLowerCase().indexOf(v.toLowerCase()) > -1).count() > 0)
-		{
-			for(int i = 0;i<emotionsSad.length;i++)
-			{
-				if(statement.contains(emotionsSad[i]))
-				{
-					String feelin = emotionsSad[i];
-					System.out.println("What about handball makes you feel" + feelin);
-					break;
-				}
-			}
-		}
-		return "";
-	}
-	private String whenEmotionHappy(String statement)
-	{
-		return"";
-	}
 	/**
 	 * Take a statement with "I want <something>." and transform it into
 	 * "Would you really be happy if you had <something>?"
@@ -198,6 +208,21 @@ public class ChatBot2
 	private String transformIWantStatement(String statement)
 	{
 		//  Remove the final period, if there is one
+		statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+		int psn = findKeyword (statement, "I want", 0);
+		String restOfStatement = statement.substring(psn + 6).trim();
+		System.out.println(restOfStatement);
+		return "Would you really be happy if you had " + restOfStatement + "?";
+	}
+	private String feeling(String statement)
+	{
 		statement = statement.trim();
 		String lastChar = statement.substring(statement
 				.length() - 1);
@@ -225,12 +250,12 @@ public class ChatBot2
 		}
 		for(int i = 0;i<emotionsHappy.length - 1;i++)
 		{
-			if(statement.contains(emotionsHappy[i].toLowerCase()))
+			if(statement.toLowerCase().contains(emotionsHappy[i].toLowerCase()))
 			{
 				sad = false;
 				for (int x = 0; x < time.length - 1; x++)
 				{
-					if (statement.contains(time[x]))
+					if (statement.toLowerCase().contains(time[x]))
 					{
 						int feeling = findKeyword(statement, emotionsHappy[i], 0);
 						String restOfStatement = statement.substring(feeling).trim();
@@ -242,7 +267,7 @@ public class ChatBot2
 				}
 				for (int t = 0; t < timePastTense.length - 1; t++)
 				{
-					if (statement.contains(timePastTense[t]))
+					if (statement.toLowerCase().contains(timePastTense[t]))
 					{
 						int feeling = findKeyword(statement, emotionsHappy[i], 0);
 						String restOfStatement = statement.substring(feeling).trim();
@@ -265,7 +290,7 @@ public class ChatBot2
 			for (int i = 0; i < emotionsSad.length - 1; i++) {
 				if (statement.contains(emotionsSad[i].toLowerCase())) {
 					for (int x = 0; x < time.length - 1; x++) {
-						if (statement.contains(time[x])) {
+						if (statement.toLowerCase().contains(time[x])) {
 							int feeling = findKeyword(statement, emotionsSad[i], 0);
 							String restOfStatement = statement.substring(feeling).trim();
 							System.out.println("Why are you feeling " + restOfStatement);
@@ -275,7 +300,7 @@ public class ChatBot2
 						}
 					}
 					for (int t = 0; t < timePastTense.length - 1; t++) {
-						if (statement.contains(timePastTense[t])) {
+						if (statement.toLowerCase().contains(timePastTense[t])) {
 							int feeling = findKeyword(statement, emotionsSad[i], 0);
 							String restOfStatement = statement.substring(feeling).trim();
 							System.out.println("Why were you feeling " + restOfStatement);
@@ -285,7 +310,7 @@ public class ChatBot2
 						}
 					}
 					if (ran == true) {
-						int feeling = findKeyword(statement, emotionsSad[i], 0);
+						int feeling = findKeyword(statement.toLowerCase(), emotionsSad[i], 0);
 						String restOfStatement = statement.substring(feeling).trim();
 						System.out.println("Why are you feeling " + restOfStatement + " today?");
 						temp = emotionsSad[i];
